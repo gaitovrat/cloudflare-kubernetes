@@ -1,0 +1,17 @@
+config:
+  hostname: "example.com"
+  # Following service will be called via tunnel
+  service:
+    name: "nginx-service"
+    namespace: "default"
+    port: 80
+# Path to cloudflare credentials
+# Credentials could be generated using following command:
+# cloudflared tunnel login
+# cloudflared tunnel create tunnel-name
+#
+# After executing it could be found ~/.cloudflare/<tunnel-id>.json
+# Set this file via --set-file
+credentials: ""
+deployment:
+  replicas: 1

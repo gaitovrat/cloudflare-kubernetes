@@ -1,8 +1,0 @@
-namespace: cloudflare-server
-resources:
-  - deployment.yaml
-  - namespace.yaml
-configMapGenerator:
-  - name: cloudflared-config
-    files:
-      - cloudflare-config.yaml

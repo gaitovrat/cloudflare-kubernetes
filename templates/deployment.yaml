@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudflared-deployment
-  namespace: cloudflare-server
+  name: {{ .Release.Name }}-deployment
 spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 1
+  replicas: {{ .Values.deployment.replicas }}
   template:
     metadata:
       labels:
@@ -38,10 +37,10 @@ spec:
       volumes:
         - name: credentials
           secret:
-            secretName: tunnel-credentials
+            secretName: {{ .Release.Name }}-secret
         - name: config
           configMap:
-            name: cloudflared-config
+            name: {{ .Release.Name }}-config
             items:
               - key: cloudflare-config.yaml
                 path: config.yaml
